@@ -3,7 +3,7 @@ import React from 'react';
 const Chart: React.FC = () => {
   return (
     <div>
-      图表页面
+      信息
     </div>
   );
 };

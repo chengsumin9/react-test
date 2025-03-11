@@ -7,7 +7,7 @@ import routesList from "./router/index";
 
 import "./App.less";
 
-const { Header, Content, Sider, Footer } = Layout;
+const { Header, Content, Sider} = Layout;
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -109,9 +109,6 @@ const App: React.FC = () => {
           </Routes>
         </Content>
       </Layout>
-      <Footer className="layout-footer">
-        ©{new Date().getFullYear()} Created by vickie
-      </Footer>
     </Layout>
   );
 };
