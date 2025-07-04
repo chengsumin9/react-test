@@ -1,11 +1,22 @@
 module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
   extends: [
-    'react-app',
-    'plugin:prettier/recommended' // 已集成 prettier 规则和冲突解决
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended',
   ],
-  plugins: ['prettier'],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh', '@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 'error', // 仅启用错误提示，配置从 .prettierrc 读取
-    // 可在此补充其他 ESLint 规则（如 react-hooks 规则）
-  }
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react-hooks/exhaustive-deps': [0],
+    '@typescript-eslint/no-explicit-any': [0],
+    'prettier/prettier': 'error',
+  },
 };
