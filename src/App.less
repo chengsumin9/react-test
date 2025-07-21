@@ -1,0 +1,75 @@
+// @import '~antd/dist/antd.less';
+
+#root {
+  height: 100%;
+}
+
+.app-loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+
+  .login-box {
+    width: 400px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .login-title {
+      text-align: center;
+      margin-bottom: 24px;
+      color: @primary-color;
+    }
+  }
+}
+
+.app-header {
+  background: #fff !important;
+  padding: 0 16px !important;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+  .header-right {
+    .user-action {
+      cursor: pointer;
+      padding: 0 12px;
+      display: inline-block;
+      transition: all 0.3s;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.025);
+      }
+
+      .username {
+        margin-left: 8px;
+      }
+    }
+  }
+}
+
+.app-breadcrumb {
+  margin: 16px 0;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+.user-list {
+  .user-list-header {
+    margin-bottom: 16px;
+    text-align: right;
+  }
+}
