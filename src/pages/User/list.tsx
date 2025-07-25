@@ -27,14 +27,14 @@ const UserList = () => {
       const res = await getUserList();
       setUsers(res.data.list);
     } catch (error) {
-      message.error('Failed to fetch users');
+      message.error('获取用户列表失败');
     } finally {
       setLoading(false);
     }
   };
 
   const handleDelete = (id: number) => {
-    message.success('User deleted successfully');
+    message.success('用户删除成功');
     setUsers(users.filter((user) => user.id !== id));
   };
 
@@ -45,7 +45,7 @@ const UserList = () => {
       key: 'id',
     },
     {
-      title: 'Name',
+      title: '姓名',
       dataIndex: 'name',
       key: 'name',
       render: (text) => (
@@ -56,36 +56,36 @@ const UserList = () => {
       ),
     },
     {
-      title: 'Email',
+      title: '邮箱',
       dataIndex: 'email',
       key: 'email',
     },
     {
-      title: 'Role',
+      title: '角色',
       dataIndex: 'role',
       key: 'role',
     },
     {
-      title: 'Status',
+      title: '状态',
       dataIndex: 'status',
       key: 'status',
     },
     {
-      title: 'Create Time',
+      title: '创建时间',
       dataIndex: 'createTime',
       key: 'createTime',
     },
     {
-      title: 'Action',
+      title: '操作',
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
           <Button type="primary" icon={<EditOutlined />} />
           <Popconfirm
-            title="Are you sure to delete this user?"
+            title="确定要删除这个用户吗？"
             onConfirm={() => handleDelete(record.id)}
-            okText="Yes"
-            cancelText="No"
+            okText="是"
+            cancelText="否"
           >
             <Button type="primary" danger icon={<DeleteOutlined />} />
           </Popconfirm>
@@ -97,7 +97,7 @@ const UserList = () => {
   return (
     <div className="user-list">
       <div className="user-list-header">
-        <Button type="primary">Add User</Button>
+        <Button type="primary">添加用户</Button>
       </div>
       <Table
         columns={columns}

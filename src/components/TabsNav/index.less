@@ -1,0 +1,92 @@
+.tabs-nav-container {
+  background: transparent;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  
+  .tab-icon {
+    margin-right: 6px;
+  }
+  
+  .tab-label-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .tab-label {
+      display: flex;
+      align-items: center;
+    }
+    
+    .tab-refresh-icon {
+      margin-left: 8px;
+      font-size: 14px;
+      opacity: 0;
+      transition: all 0.3s;
+      
+      &:hover {
+        color: #165DFF;
+        transform: rotate(180deg);
+      }
+    }
+    
+    &:hover {
+      .tab-refresh-icon {
+        opacity: 1;
+      }
+    }
+  }
+  
+  // 覆盖antd默认样式
+  :global {
+    .ant-tabs {
+      height: 100%;
+    }
+    
+    .ant-tabs-nav {
+      margin-bottom: 0;
+      height: 100%;
+    }
+    
+    .ant-tabs-nav-wrap {
+      height: 100%;
+    }
+    
+    .ant-tabs-nav-list {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    
+    .ant-tabs-tab {
+      padding: 8px 16px;
+      transition: all 0.3s;
+      margin: 0 4px;
+      background: transparent;
+      border: none !important;
+      border-radius: 4px !important;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      
+      &:hover {
+        color: #165DFF;
+        background: rgba(22, 93, 255, 0.05);
+      }
+    }
+    
+    .ant-tabs-tab-active {
+      background: rgba(22, 93, 255, 0.1) !important;
+      
+      .ant-tabs-tab-btn {
+        color: #165DFF !important;
+        font-weight: 500;
+      }
+    }
+    
+    .ant-tabs-nav-more {
+      border: none !important;
+      background: transparent !important;
+    }
+  }
+}

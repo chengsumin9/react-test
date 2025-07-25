@@ -1,46 +1,80 @@
 import { Menu } from 'antd';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   DashboardOutlined,
   UserOutlined,
   SettingOutlined,
+  DesktopOutlined
 } from '@ant-design/icons';
-// import './index.less';
+import './index.less';
 
-const items = [
-  {
-    key: '/',
-    icon: <DashboardOutlined />,
-    label: 'Dashboard',
-  },
-  {
-    key: '/user',
-    icon: <UserOutlined />,
-    label: 'User Management',
-  },
-  {
-    key: '/settings',
-    icon: <SettingOutlined />,
-    label: 'Settings',
-  },
-];
+interface SideMenuProps {
+  collapsed?: boolean;
+}
 
-const SideMenu = () => {
-  const location = useLocation();
+const SideMenu: React.FC<SideMenuProps> = ({ collapsed }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // 获取当前选中的菜单项
+  const selectedKeys = [location.pathname];
+  
+  // 如果当前路径是子路径，则展开父级菜单
+  const openKeys = collapsed ? [] : location.pathname.split('/').slice(0, -1).map((_, index, array) => 
+    '/' + array.slice(0, index + 1).join('/')
+  ).filter(item => item !== '/');
 
-  const onClick = (e: { key: string }) => {
-    navigate(e.key);
+  // 处理菜单点击事件
+  const handleMenuClick = ({ key }: { key: string }) => {
+    navigate(key);
   };
 
   return (
-    <Menu
-      theme="dark"
-      mode="inline"
-      selectedKeys={[location.pathname]}
-      items={items}
-      onClick={onClick}
-    />
+    <div className="side-menu-container">
+      {/* Logo区域 */}
+      <div className="logo-container">
+        {!collapsed ? (
+          <h1 className="logo-text">Art Design Pro</h1>
+        ) : (
+          <h1 className="logo-text-collapsed">Art</h1>
+        )}
+      </div>
+      
+      <Menu
+        mode="inline"
+        theme="light"
+        selectedKeys={selectedKeys}
+        defaultOpenKeys={openKeys}
+        onClick={handleMenuClick}
+        items={[
+          {
+            key: '/dashboard',
+            icon: <DashboardOutlined />,
+            label: '仪表盘',
+            children: [
+              {
+                key: '/',
+                label: '数据概览',
+              },
+              {
+                key: '/dashboard/workplace',
+                label: '工作台',
+              },
+            ],
+          },
+          {
+            key: '/user',
+            icon: <UserOutlined />,
+            label: '用户管理',
+          },
+          {
+            key: '/settings',
+            icon: <SettingOutlined />,
+            label: '系统设置',
+          },
+        ]}
+      />
+    </div>
   );
 };
 

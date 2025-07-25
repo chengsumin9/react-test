@@ -3,9 +3,11 @@ import { useLocation, Link } from 'react-router-dom';
 // import './index.less';
 
 const breadcrumbNameMap: Record<string, string> = {
-  '/': 'Dashboard',
-  '/user': 'User Management',
-  '/settings': 'Settings',
+  '/': '仪表盘',
+  '/dashboard': '仪表盘',
+  '/dashboard/workplace': '工作台',
+  '/user': '用户管理',
+  '/settings': '系统设置',
 };
 
 const AppBreadcrumb = () => {
@@ -23,7 +25,7 @@ const AppBreadcrumb = () => {
 
   const breadcrumbItems = [
     <Breadcrumb.Item key="home">
-      <Link to="/">Home</Link>
+      <Link to="/">首页</Link>
     </Breadcrumb.Item>,
   ].concat(extraBreadcrumbItems);
 
