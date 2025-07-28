@@ -1,7 +1,7 @@
 .main-layout {
   min-height: 100vh;
   display: flex;
-  
+
   .main-sider {
     position: fixed;
     left: 0;
@@ -11,18 +11,18 @@
     z-index: 99;
     box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
     transition: all 0.2s;
-    
+
     &::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
-    
+
     &::-webkit-scrollbar-thumb {
       background: rgba(0, 0, 0, 0.12);
       border-radius: 3px;
     }
   }
-  
+
   .main-content-layout {
     transition: all 0.2s;
     display: flex;
@@ -30,33 +30,18 @@
     height: 100vh;
     overflow: hidden;
   }
-  
+
   .main-header {
-    position: fixed;
-    width: calc(100vw - 240px);
-    left: 240px;
-    top: 0;
-    z-index: 100;
-    background: #fff;
-    padding: 0;
     height: 88px; /* 功能区48px + 标签区40px */
-    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-    transition: all 0.2s;
-    
-    &.collapsed {
-      width: calc(100vw - 64px);
-      left: 64px;
-    }
   }
-  
+
   .main-content {
-    margin-top: 88px;
-    padding: 16px;
+    margin: 16px;
     overflow-y: auto;
     flex: 1;
     background-color: #f5f7fa;
   }
-  
+
   .content-container {
     background: #fff;
     padding: 16px;

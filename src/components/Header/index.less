@@ -3,15 +3,14 @@
   flex-direction: column;
   padding: 0;
   background: #fff;
-  
+
   .header-function-area {
     display: flex;
     align-items: center;
     height: 48px;
     padding: 0 16px;
-    border-bottom: 1px solid #f0f0f0;
     position: relative;
-    
+
     .function-item {
       display: flex;
       align-items: center;
@@ -24,36 +23,38 @@
       cursor: pointer;
       border-radius: 4px;
       transition: all 0.3s;
-      
+
       &:hover {
-        color: #165DFF;
+        color: #165dff;
         background-color: rgba(22, 93, 255, 0.1);
       }
     }
-    
+
     .breadcrumb-container {
       margin-left: 8px;
     }
-    
+
     .tools-container {
       display: flex;
       align-items: center;
       margin-left: auto;
-      margin-right: 200px; /* 为右侧用户信息区域留出空间 */
-      
+      margin-right: 174px; /* 为右侧用户信息区域留出空间 */
+
       .search-container {
-        margin: 0 8px;
+        height: 40px;
+        margin-top: 10px;
+        margin-right: 16px;
       }
     }
   }
-  
+
   .tabs-container {
     display: flex;
     align-items: center;
     height: 40px;
     padding: 0 16px;
   }
-  
+
   .header-right {
     position: absolute;
     top: 0;
@@ -61,34 +62,34 @@
     display: flex;
     align-items: center;
     height: 48px;
-    
+
     .header-action {
       padding: 0 12px;
       cursor: pointer;
       font-size: 18px;
       color: rgba(0, 0, 0, 0.65);
       transition: all 0.3s;
-      
+
       &:hover {
-        color: #165DFF;
+        color: #165dff;
       }
     }
-    
+
     .user-action {
       cursor: pointer;
       padding: 0 12px;
       display: flex;
       align-items: center;
       transition: all 0.3s;
-      
+
       &:hover {
         background: rgba(0, 0, 0, 0.025);
       }
-      
+
       .user-avatar {
-        background-color: #165DFF;
+        background-color: #165dff;
       }
-      
+
       .username {
         margin-left: 8px;
         font-size: 14px;

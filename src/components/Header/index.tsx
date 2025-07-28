@@ -1,4 +1,13 @@
-import { Layout, Dropdown, Avatar, Menu, message, Badge, Tooltip, Input } from 'antd';
+import {
+  Layout,
+  Dropdown,
+  Avatar,
+  Menu,
+  message,
+  Badge,
+  Tooltip,
+  Input,
+} from 'antd';
 import {
   UserOutlined,
   LogoutOutlined,
@@ -12,7 +21,7 @@ import {
   AppstoreOutlined,
   FullscreenOutlined,
   ZoomInOutlined,
-  InteractionOutlined
+  InteractionOutlined,
 } from '@ant-design/icons';
 import { removeToken } from '../../utils/auth';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -30,7 +39,12 @@ interface AppHeaderProps {
   collapsed?: boolean;
 }
 
-const AppHeader: React.FC<AppHeaderProps> = ({ className, children, toggleSider, collapsed }) => {
+const AppHeader: React.FC<AppHeaderProps> = ({
+  className,
+  children,
+  toggleSider,
+  collapsed,
+}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -63,7 +77,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ className, children, toggleSider,
   // 切换全屏模式
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(err => {
+      document.documentElement.requestFullscreen().catch((err) => {
         message.error(`全屏模式出错: ${err.message}`);
       });
     } else {
@@ -107,40 +121,38 @@ const AppHeader: React.FC<AppHeaderProps> = ({ className, children, toggleSider,
         <div className="function-item" onClick={toggleSider}>
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </div>
-        
+
         {/* 面包屑 */}
-        <div className="breadcrumb-container">
-          {children}
-        </div>
-        
+        <div className="breadcrumb-container">{children}</div>
+
         {/* 工具栏 - 新增红框中的功能 */}
         <div className="tools-container">
           {/* 放大图 */}
-          <Tooltip title="放大图">
+          {/* <Tooltip title="放大图">
             <div className="function-item">
               <ZoomInOutlined />
             </div>
-          </Tooltip>
-          
+          </Tooltip> */}
+
           {/* 搜索 */}
           <div className="search-container">
             <Search placeholder="搜索..." style={{ width: 200 }} />
           </div>
-          
+
           {/* 刷新 */}
           <Tooltip title="刷新">
             <div className="function-item" onClick={refreshPage}>
               <ReloadOutlined />
             </div>
           </Tooltip>
-          
+
           {/* 全屏 */}
-          <Tooltip title={isFullscreen ? "退出全屏" : "全屏"}>
+          <Tooltip title={isFullscreen ? '退出全屏' : '全屏'}>
             <div className="function-item" onClick={toggleFullscreen}>
               <FullscreenOutlined />
             </div>
           </Tooltip>
-          
+
           {/* 创新互动操作 */}
           <Tooltip title="创新互动操作">
             <div className="function-item">
@@ -149,12 +161,12 @@ const AppHeader: React.FC<AppHeaderProps> = ({ className, children, toggleSider,
           </Tooltip>
         </div>
       </div>
-      
+
       {/* 标签导航区 */}
       <div className="tabs-container">
         <TabsNav refreshPage={refreshPage} />
       </div>
-      
+
       {/* 用户信息区 */}
       <div className="header-right">
         <Tooltip title="帮助文档">
