@@ -34,9 +34,16 @@ const MainLayout = () => {
       </Sider>
 
       {/* 右侧内容容器 */}
-      <Layout className="main-content-layout" style={{ marginLeft: collapsed ? '64px' : '240px' }}>
+      <Layout
+        className="main-content-layout"
+        style={{ marginLeft: collapsed ? '64px' : '240px' }}
+      >
         {/* 固定头部 */}
-        <Header className="main-header" toggleSider={toggleSider} collapsed={collapsed}>
+        <Header
+          className="main-header"
+          toggleSider={toggleSider}
+          collapsed={collapsed}
+        >
           <Breadcrumb />
         </Header>
 

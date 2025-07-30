@@ -1,5 +1,6 @@
 import { Menu } from 'antd';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import {
   DashboardOutlined,
   UserOutlined,
@@ -15,18 +16,38 @@ interface SideMenuProps {
 const SideMenu: React.FC<SideMenuProps> = ({ collapsed }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [openKeys, setOpenKeys] = useState<string[]>([]);
   
   // 获取当前选中的菜单项
   const selectedKeys = [location.pathname];
   
-  // 如果当前路径是子路径，则展开父级菜单
-  const openKeys = collapsed ? [] : location.pathname.split('/').slice(0, -1).map((_, index, array) => 
-    '/' + array.slice(0, index + 1).join('/')
-  ).filter(item => item !== '/');
+  // 根据当前路径设置默认展开的菜单
+  useEffect(() => {
+    if (collapsed) {
+      setOpenKeys([]);
+      return;
+    }
+    
+    // 如果当前路径是首页或工作台，应该展开仪表盘菜单
+    if (location.pathname === '/' || location.pathname === '/dashboard/workplace') {
+      setOpenKeys(['/dashboard']);
+    } else {
+      // 其他情况按路径层级处理
+      const pathKeys = location.pathname.split('/').slice(0, -1).map((_, index, array) => 
+        '/' + array.slice(0, index + 1).join('/')
+      ).filter(item => item !== '/');
+      setOpenKeys(pathKeys);
+    }
+  }, [location.pathname, collapsed]);
 
   // 处理菜单点击事件
   const handleMenuClick = ({ key }: { key: string }) => {
     navigate(key);
+  };
+  
+  // 处理子菜单展开/收起
+  const handleOpenChange = (keys: string[]) => {
+    setOpenKeys(keys);
   };
 
   return (
@@ -44,7 +65,8 @@ const SideMenu: React.FC<SideMenuProps> = ({ collapsed }) => {
         mode="inline"
         theme="light"
         selectedKeys={selectedKeys}
-        defaultOpenKeys={openKeys}
+        openKeys={openKeys}
+        onOpenChange={handleOpenChange}
         onClick={handleMenuClick}
         items={[
           {
