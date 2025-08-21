@@ -6,6 +6,8 @@ import NotFound from '../pages/404';
 
 const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Workplace = lazy(() => import('../pages/Dashboard/Workplace'));
+const Rolesystem = lazy(() => import('../pages/System/role/index'));
+const Menusystem = lazy(() => import('../pages/System/menu/index'));
 const UserList = lazy(() => import('../pages/User/List'));
 
 // 路由守卫
@@ -28,8 +30,16 @@ const routes: RouteObject[] = [
         path: 'dashboard',
         children: [
           { index: true, element: <Dashboard /> },
-          { path: 'workplace', element: <Workplace /> }
-        ]
+          { path: 'workplace', element: <Workplace /> },
+        ],
+      },
+      {
+        path: 'system',
+        children: [
+          // { index: true, element: <Rolesystem /> },
+          { path: 'role', element: <Rolesystem /> },
+          { path: 'menu', element: <Menusystem /> },
+        ],
       },
       {
         path: 'user',

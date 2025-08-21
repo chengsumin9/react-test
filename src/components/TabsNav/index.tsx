@@ -6,7 +6,8 @@ import {
   UserOutlined,
   SettingOutlined,
   DesktopOutlined,
-  ReloadOutlined
+  ReloadOutlined,
+  ProfileOutlined,
 } from '@ant-design/icons';
 import './index.less';
 
@@ -28,6 +29,8 @@ const iconMap: Record<string, React.ReactNode> = {
   '/dashboard/workplace': <DesktopOutlined />,
   '/user': <UserOutlined />,
   '/settings': <SettingOutlined />,
+  '/system/role': <UserOutlined />,
+  '/system/menu': <ProfileOutlined />,
 };
 
 // 菜单项与标题的映射
@@ -35,6 +38,8 @@ const titleMap: Record<string, string> = {
   '/': '数据概览',
   '/dashboard': '数据概览',
   '/dashboard/workplace': '工作台',
+  '/system/role': '角色管理',
+  '/system/menu': '菜单管理',
   '/user': '用户管理',
   '/settings': '系统设置',
 };
@@ -90,6 +95,8 @@ const TabsNav: React.FC<TabsNavProps> = ({ refreshPage }) => {
 
   // 切换标签页
   const onChange = (key: string) => {
+    console.log(key);
+
     navigate(key);
   };
 
@@ -143,8 +150,8 @@ const TabsNav: React.FC<TabsNavProps> = ({ refreshPage }) => {
                 {tab.label}
               </span>
               <Tooltip title="刷新标签页">
-                <ReloadOutlined 
-                  className="tab-refresh-icon" 
+                <ReloadOutlined
+                  className="tab-refresh-icon"
                   onClick={(e) => handleRefreshTab(e, tab.key)}
                 />
               </Tooltip>
